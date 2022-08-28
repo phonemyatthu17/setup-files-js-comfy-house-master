@@ -14,7 +14,15 @@ const productsDom = document.querySelector(".products-center");
 let cart = [];
 
 // getting the products
-class Products {}
+class Products {
+  async getProduct() {
+    try {
+      const result = await fetch("products.json");
+    } catch (error) {
+      console.log("error");
+    }
+  }
+}
 
 // display design
 class UI {}
