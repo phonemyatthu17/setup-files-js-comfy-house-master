@@ -34,7 +34,28 @@ class Products {
 }
 
 // display design
-class UI {}
+class UI {
+  displayProducts(products) {
+    let result = "";
+    products.forEach((product) => {
+      result += `<article class="product">
+          <div class="img-container">
+            <img
+              src="/images/product-1.jpeg"
+              alt="product"
+              class="product-img"
+            />
+            <button class="bag-btn" data-id="1">
+              <i class="fa-solid fa-shopping-cart"></i>
+              add to bag
+            </button>
+          </div>
+          <h3>queen bed</h3>
+          <h4>400</h4>
+        </article>`;
+    });
+  }
+}
 
 // local storgae
 class Storage {}
@@ -43,5 +64,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
 
-  products.getProducts().then((data) => console.log(data));
+  products.getProducts().then((products) => displayProducts(products));
 });
