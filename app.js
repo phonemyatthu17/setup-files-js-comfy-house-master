@@ -18,6 +18,7 @@ class Products {
   async getProducts() {
     try {
       let result = await fetch("products.json");
+      return result;
     } catch (error) {
       console.log("error");
     }
@@ -34,5 +35,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
 
-  products.getProducts().then;
+  products.getProducts().then((data) => console.log(data));
 });
