@@ -15,9 +15,9 @@ let cart = [];
 
 // getting the products
 class Products {
-  async getProduct() {
+  async getProducts() {
     try {
-      const result = await fetch("products.json");
+      let result = await fetch("products.json");
     } catch (error) {
       console.log("error");
     }
@@ -33,4 +33,6 @@ class Storage {}
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
+
+  products.getProducts().then;
 });
