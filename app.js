@@ -41,19 +41,20 @@ class UI {
       result += `<article class="product">
           <div class="img-container">
             <img
-              src="/images/product-1.jpeg"
+              src="${product.image}"
               alt="product"
               class="product-img"
             />
-            <button class="bag-btn" data-id="1">
+            <button class="bag-btn" data-id="${product.id}">
               <i class="fa-solid fa-shopping-cart"></i>
               add to bag
             </button>
           </div>
-          <h3>queen bed</h3>
-          <h4>400</h4>
+          <h3>${product.title}</h3>
+          <h4>$${product.price}</h4>
         </article>`;
     });
+    console.log(products);
   }
 }
 
@@ -64,5 +65,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
 
-  products.getProducts().then((products) => displayProducts(products));
+  products.getProducts().then((products) => ui.displayProducts(products));
 });
