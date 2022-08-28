@@ -7,4 +7,23 @@ const cartDom = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
 const cartContent = document.querySelector(".cart-content");
 const cartItem = document.querySelector(".cart-item");
-const productsDom = document.querySelector(".pr");
+const cartTotal = document.querySelector(".cart-total");
+const productsDom = document.querySelector(".products-center");
+
+// cart
+let cart = [];
+
+// getting the products
+class Products {}
+
+// display design
+class UI {}
+
+// local storgae
+class Storage {}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const ui = new UI();
+  const products = new Products();
+  const storgae = new Storage();
+});
