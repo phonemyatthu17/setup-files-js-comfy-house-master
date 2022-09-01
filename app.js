@@ -64,12 +64,17 @@ class UI {
       if (inCart) {
         button.innerText = "In Cart";
         button.disabled = true;
-      } else {
-        button.addEventListener("click", (event) => {
-          event.target.innerText = "In Cart";
-          event.target.disabled = true;
-        });
       }
+      button.addEventListener("click", (event) => {
+        event.target.innerText = "In Cart";
+        event.target.disabled = true;
+        // get product from products
+        // add product to cart
+        // save cart in local storage
+        // set cart values
+        // display cart item
+        // show the cart
+      });
     });
   }
 }
