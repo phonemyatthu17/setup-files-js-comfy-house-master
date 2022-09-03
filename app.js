@@ -6,7 +6,7 @@ const clearCart = document.querySelector(".clear-cart");
 const cartDom = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
 const cartContent = document.querySelector(".cart-content");
-const cartItem = document.querySelector(".cart-item");
+const cartItem = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const productsDom = document.querySelector(".products-center");
 
@@ -85,7 +85,17 @@ class UI {
       });
     });
   }
-  setCartValue(cart) {}
+  setCartValue(cart) {
+    let tempTotal = 0;
+    let itemTotal = 0;
+    cart.map((item) => {
+      tempTotal += item.price * item.amount;
+      itemTotal += item.amount;
+    });
+    cartTotal.innerHTML = parseFloat(tempTotal.toFixed());
+    cartItem.innerHTML = itemTotal;
+    console.log(cartTotal, cartItem);
+  }
 }
 
 // local storgae
