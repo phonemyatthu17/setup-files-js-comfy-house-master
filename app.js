@@ -95,7 +95,7 @@ class Storage {
   }
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem("products"));
-    products.find((product) => product.id === id);
+    return products.find((product) => product.id === id);
   }
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
