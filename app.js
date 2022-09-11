@@ -5,7 +5,7 @@ const closeCart = document.querySelector(".close-cart");
 const clearCart = document.querySelector(".clear-cart");
 const cartDom = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
-const cartContent = document.querySelector(".cart-content");
+const cartContent = document.querySelector(".card-content");
 const cartItem = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const productsDom = document.querySelector(".products-center");
@@ -81,6 +81,7 @@ class UI {
         // set cart values
         this.setCartValue(cart);
         // display cart item
+        this.addCartItem(cartItem);
         // show the cart
       });
     });
@@ -92,9 +93,25 @@ class UI {
       tempTotal += item.price * item.amount;
       itemTotal += item.amount;
     });
-    cartTotal.innerHTML = parseFloat(tempTotal.toFixed());
+    cartTotal.innerHTML = parseFloat(tempTotal.toFixed(2));
     cartItem.innerHTML = itemTotal;
-    console.log(cartTotal, cartItem);
+  }
+  addCartItem(item) {
+    const div = document.createElement("div");
+    div.classList.add = "cart-item";
+    div.innerHTML = `<img src=${item.image} alt="product-1" />
+            <div>
+              <h4>${item.title}</h4>
+              <h5>${item.price}</h5>
+              <span class="remove-item" data-id=${item.id}>remove</span>
+            </div>
+            <div>
+              <i class="fas fa-chevron-up" data-id=${item.id}></i>
+              <p class="${item.amount}">7</p>
+              <i class="fas fa-chevron-down" data-id=${item.id}></i>
+            </div>`;
+    cartContent.appendChild(div);
+    console.log(cartContent);
   }
 }
 
