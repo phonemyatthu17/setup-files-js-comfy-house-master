@@ -83,6 +83,7 @@ class UI {
         // display cart item
         this.addCartItem(cartItem);
         // show the cart
+        this.showCart();
       });
     });
   }
@@ -98,7 +99,7 @@ class UI {
   }
   addCartItem(item) {
     const div = document.createElement("div");
-    div.classList.add = "cart-item";
+    div.classList.add("cart-item");
     div.innerHTML = `<img src=${item.image} alt="product-1" />
             <div>
               <h4>${item.title}</h4>
@@ -111,7 +112,10 @@ class UI {
               <i class="fas fa-chevron-down" data-id=${item.id}></i>
             </div>`;
     cartContent.appendChild(div);
-    console.log(cartContent);
+  }
+  showCart() {
+    cartOverlay.classList.add("transparentBcg");
+    cartDom.classList.add("showCart");
   }
 }
 
