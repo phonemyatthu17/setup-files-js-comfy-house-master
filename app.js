@@ -104,7 +104,7 @@ class UI {
             <div>
               <h4>${item.title}</h4>
               <h5>${item.price}</h5>
-              <span class="remove-item" data-id=${item.id}>remove</span>
+              <span class="remove-it em" data-id=${item.id}>remove</span>
             </div>
             <div>
               <i class="fas fa-chevron-up" data-id=${item.id}></i>
@@ -116,6 +116,10 @@ class UI {
   showCart() {
     cartOverlay.classList.add("transparentBcg");
     cartDom.classList.add("showCart");
+  }
+  setupAPP() {
+    cart = Storage.getCart();
+    this.setCartValue(cart);
   }
 }
 
@@ -131,12 +135,21 @@ class Storage {
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
+  static getCart() {
+    localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : [];
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
 
+  // setup app
+  ui.setupAPP();
+
+  // products
   products
     .getProducts()
     .then((products) => {
