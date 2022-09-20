@@ -2,7 +2,7 @@
 
 const cartBtn = document.querySelector(".cart-btn");
 const closeCart = document.querySelector(".close-cart");
-const clearCart = document.querySelector(".clear-cart");
+const clearCartBtn = document.querySelector(".clear-cart");
 const cartDom = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
 const cartContent = document.querySelector(".card-content");
@@ -133,6 +133,14 @@ class UI {
     cartOverlay.classList.remove("transparentBcg");
     cartDom.classList.remove("showCart");
   }
+  cartLogic() {
+    clearCartBtn.addEventListener("click", () => {
+      this.clearCart();
+    });
+  }
+  clearCart() {
+    console.log(this);
+  }
 }
 
 // local storgae
@@ -170,5 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(() => {
       ui.getBagButtons();
+      ui.cartLogic();
     });
 });
