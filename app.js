@@ -50,7 +50,7 @@ class UI {
             />
             <button class="bag-btn" data-id="${product.id}">
               <i class="fa-solid fa-shopping-cart"></i>
-              add to bag
+              add to cart
             </button>
           </div>
           <h3>${product.title}</h3>
@@ -97,7 +97,6 @@ class UI {
     });
     cartTotal.innerHTML = parseFloat(tempTotal.toFixed(2));
     cartItem.innerHTML = itemTotal;
-    console.log(cartTotal, cartItem);
   }
   addCartItem(item) {
     const div = document.createElement("div");
@@ -106,7 +105,7 @@ class UI {
             <div>
               <h4>${item.title}</h4>
               <h5>${item.price}</h5>
-              <span class="remove-it em" data-id=${item.id}>remove</span>
+              <span class="remove-item" data-id=${item.id}>remove</span>
             </div>
             <div>
               <i class="fas fa-chevron-up" data-id=${item.id}></i>
@@ -134,15 +133,42 @@ class UI {
     cartDom.classList.remove("showCart");
   }
   cartLogic() {
+    // clear cart
+
     clearCartBtn.addEventListener("click", () => {
       this.clearCart();
+    });
+    // cart functionality
+
+    cartContent.addEventListener("click", (event) => {
+      if (event.target.classList.contains("remove-item")) {
+        let removeItem = event.target;
+        let id = removeItem.dataset.id;
+        cartContent.removeChild(removeItem.parentElement.parentElement);
+        this.removeItem(id);
+      }
     });
   }
   clearCart() {
     let cartItems = cart.map((item) => item.id);
     cartItems.forEach((id) => this.removeItem(id));
+
+    while (cartContent.children.length > 0) {
+      cartContent.removeChild(cartContent.children[0]);
+    }
   }
-  removeItem(id) {}
+  removeItem(id) {
+    cart = cart.filter((item) => item.id !== id);
+    this.setCartValue(cart);
+    Storage.saveCart(cart);
+    let button = this.getSingularButton(id);
+    button.disabled = false;
+    button.innerHTML = `<i class="fa-solid fa-shopping-cart"></i>add to cart`;
+    this.hideCart();
+  }
+  getSingularButton(id) {
+    return buttonsDom.find((button) => button.dataset.id === id);
+  }
 }
 
 // local storgae
