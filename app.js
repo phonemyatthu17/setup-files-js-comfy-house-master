@@ -1,3 +1,10 @@
+const client = contentful.createClient({
+  space: "oyztvur8u7uj",
+  accessToken: "NF_mFlH_qZD0UJZ9dYMWJfufbzfwBry8_OLiCzYfovQ",
+});
+
+console.log(client);
+
 // variables
 
 const cartBtn = document.querySelector(".cart-btn");
