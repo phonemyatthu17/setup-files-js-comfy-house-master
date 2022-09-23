@@ -33,7 +33,7 @@ class Products {
 
       let result = await fetch("products.json");
       let data = await result.json();
-      let products = contentful.items;
+      let products = data.items;
       products = products.map((item) => {
         const { title, price } = item.fields;
         const { id } = item.sys;
